@@ -1,0 +1,2 @@
+This program is my take on creating and using a very simple ChatGPT assistant to answer questions from minutes of a meeting.
+It takes a text file as an input, queries the user for questions, and displays the responses to the user.
