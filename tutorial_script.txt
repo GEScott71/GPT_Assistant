@@ -1,10 +1,19 @@
 A simple ChatGPT Assistant - For answering questions from an uploaded file
 
-This video is about software that uses AI tools to create an customized assistant to answer questions about a file provided to it, such as a transcript from a business meeting.
+- Have this script open
+- Have the UNP meeting minutes open
+- Have OpenAI assistants documentation open
+
+This video is about software that uses AI tools to create an customized assistant to answer questions about a file provided to it, such as a transcript from a company earnings call.
 
 I wrote this based on OpenAI's somewhat limited documentation and examples on their assistants API.  I also got a lot of help from tutorial videos from other users; I've linked them below.
 
 Here is the program.
+
+I will run the program first and show you what it does, and then go over the code in detail.
+- Using UP's Q4 conference call transcript, about 70kb from the hour-long meeting, 70K characters, about 20 pages if you open it in Word.
+- Ask it 2 questions - op ratio, and risks in 2024
+
 I'm using PyCharm as my development environment.
 
 Talk through the summary
@@ -21,7 +30,9 @@ Next I will skip over the functions and go to the main body of the program first
 
 Now we will go over the functions:
 upload_file - uploads the file to OpenAI so your assistant can access it
+
 create_assistant - gives your assistant a name, general instructions, tells it what type of assistant it is - in this case retrieval, meaning it is to retrieve information from the file, and links the file to the assistant
+
 run_assistant - actually does several things:
 - First, it creates a message in the existing thread with the message or question that the user entered.  The thread and the user question were created below in the main body of the program below.
 - Next, it runs the assistant on the thread that now contains the new question from the user
@@ -30,5 +41,8 @@ run_assistant - actually does several things:
 - Finally it displays the response to the question by extracting the messages from the thread and displaying them
 
 Now let's run the program and ask a few questions.  I'm using the Union Pacific Q4 2023 earnings call transcript.
+- Show the transcript
 - Ask 2 questions from the transcript
 - Ask a question for info not provided in the transcript
+
+Show how to retrieve Assistant ID
