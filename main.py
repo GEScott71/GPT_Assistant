@@ -1,21 +1,21 @@
-# This Python program uses OpenAI tools to create a very simple ChatGPT assistant to answer questions from minutes of a meeting.
+# This Python program uses OpenAI tools to create a very simple ChatGPT assistant to answer questions about a document.
 # It takes a text file as an input, queries the user for questions, and displays the responses to the user.
 #
-# First, it uploads a text file to ChatGPT
-# Next, it creates a ChatGPT assistant that references that text file
+# First, it uploads a document to ChatGPT
+# Next, it creates a ChatGPT assistant that references that document
 # Then it creates a thread
 # Then it starts a loop asking the user for questions.  When a question is entered,
 # It creates a message with the question, adds it to the thread, and runs the assistant on the thread
 # Finally, it displays the response from ChatGPT and starts the loop again
 
-# Input: a file such as a text file, and user-entered questions
-# Output: displays responses to the questions about the file
+# Input: a document such as a text file, and user-entered questions
+# Output: displays responses to the questions about the document
 
 import openai
 from openai import OpenAI
 import time # used in function to periodically check assistant status
 
-openai.api_key = open(r"C:\Users\GESco\Documents\key.txt", "r").read().strip('\n')
+openai.api_key = open(r"C:\Users\GESco\Documents\key.txt", "r").read().strip('\n') # My OpenAI API key location / path
 client = OpenAI(
     api_key=openai.api_key
 )
@@ -31,7 +31,7 @@ def upload_file(path):  # Upload a file to OpenAI with an "assistants" purpose
 def create_assistant(file): # Create an assistant with OpenAI with instructions and a file to reference
     assistant = client.beta.assistants.create(
         name="Meeting Analyzer",
-        instructions="You are a helpful and highly skilled AI assistant trained in language comprehension and summarization. Answer questions on the provided meeting transcription:",
+        instructions="You are a helpful and highly skilled AI assistant trained in language comprehension and summarization. Answer questions about the document provided:",
         tools=[{"type": "retrieval"}],
         model="gpt-4-turbo-preview",
         file_ids = [file.id]
